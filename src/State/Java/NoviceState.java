@@ -1,14 +1,18 @@
+import java.util.Random;
+
 public class NoviceState implements State{
+    Random rand = new Random();
+
     @Override
     public void train(GameCharacter character) {
-        character.setExperience(character.getExperience() + 10);
-        System.out.println("Training... " + character.getName() + " gained 10 experience points.");
+        int random = rand.nextInt(3, 10);
+        character.setExperience(character.getExperience() + random);
+        System.out.println("Training... " + character.getName() + " gained " + random + " experience points.");
     }
 
     @Override
     public void meditate(GameCharacter character) {
-        character.setHealth(character.getHealth() + 5);
-        System.out.println(character.getName() + " meditated. Health recovered by 5.");
+        System.out.println(character.getName() + " don't know how to relax...");
 
     }
 
@@ -30,7 +34,7 @@ public class NoviceState implements State{
 
     @Override
     public void levelUp(GameCharacter character) {
-        if (character.getExperience() >= 20) {
+        if (character.getExperience() >= 50) {
             character.setState(new IntermediateState());
             System.out.println(character.getName() + " is now an Intermediate.");
         }

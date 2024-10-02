@@ -3,7 +3,7 @@ public class DecoratorMain {
         Printer basicPrinter = new BasicPrinter();
         basicPrinter.print("Hello World!");
 
-        Printer decoratedPrinter = new EncryptedPrinter(new FilePrinter(new BasicPrinter()));
+        Printer decoratedPrinter = new FilePrinter(new EncryptedPrinter(new BasicPrinter()));
         decoratedPrinter.print("Hello World!");
     }
 }

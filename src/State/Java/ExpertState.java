@@ -1,29 +1,38 @@
+import java.util.Random;
+
 public class ExpertState implements State{
+
+    Random rand = new Random();
 
     @Override
     public void train(GameCharacter character) {
-        character.setExperience(character.getExperience() + 10);
-        System.out.println("Training... " + character.getName() + " gained 10 experience points.");
+        int random = rand.nextInt(5, 20);
+        character.setExperience(character.getExperience() + random);
+        System.out.println("Training... " + character.getName() + " gained " + random + " experience points.");
     }
 
     @Override
     public void meditate(GameCharacter character) {
-        character.setHealth(character.getHealth() + 5);
-        System.out.println(character.getName() + " meditated. Health recovered by 5.");
+        int random = rand.nextInt(0,15);
+        character.setHealth(character.getHealth() + random);
+        System.out.println(character.getName() + " meditated. Health recovered by " + random + " points." );
 
     }
 
     @Override
     public void fight(GameCharacter character) {
-        character.setHealth(character.getHealth() - 10);
+        int randomHp = rand.nextInt(0,20);
+        int randomXp = rand.nextInt(10,50);
+
+        character.setHealth(character.getHealth() - randomHp);
         if (character.getHealth() <= 0) {
             System.out.println(character.getName() + " fought bravely, but died.");
             return;
         }
 
-        character.setExperience(character.getExperience() + 20);
+        character.setExperience(character.getExperience() + randomXp);
 
-        System.out.println(character.getName() + " fought. Health lost by 10. Gained 20 experience points.");
+        System.out.println(character.getName() + " fought. Health lost by " + randomHp + ". Gained " + randomXp + " experience points.");
     }
 
     @Override

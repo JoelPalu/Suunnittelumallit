@@ -3,12 +3,14 @@ public class GameCharacter {
     private String name;
     private int experience;
     private int health;
+    private boolean alive;
 
     public GameCharacter(String name) {
         this.name = name;
         this.state = new NoviceState();
         this.experience = 0;
         this.health = 100;
+        this.alive = true;
     }
 
     public int getHealth() {
@@ -68,6 +70,14 @@ public class GameCharacter {
 
     public String displayStats() {
         return "Name: " + name + "\nState: " + displayState() + "\nExperience: " + experience + "\nHealth: " + health;
+    }
+
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
     }
 
 
