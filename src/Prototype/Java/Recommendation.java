@@ -35,9 +35,7 @@ public class Recommendation implements Cloneable {
         try {
             Recommendation cloned = (Recommendation) super.clone();
             cloned.books = new ArrayList<>();
-            for (Book book : this.books) {
-                cloned.books.add(book.clone());
-            }
+            cloned.books.addAll(this.books);
             return cloned;
         } catch (CloneNotSupportedException e) {
             throw new AssertionError(); // Should never happen
